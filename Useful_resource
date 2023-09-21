@@ -34,3 +34,29 @@ Geeks for Geeks on JavaScript: The Javascript tutorial is designed to help both 
 https://www.geeksforgeeks.org/javascript/
 Tutorials Point on CSS: It covers all versions of CSS. It will guide us towards CSS Box Model, Selectors, The cascade, Color, Sizing Units, Layout, Flexbox, Grid, Pseudo-elements and Pseudo-classes, Borders, Shadows, Focus, Functions, Gradients, Animations, Filters, Lists, Transitions, Overflow, Backgrounds, Text and typography.
 https://www.tutorialspoint.com/css/index.htm
+
+
+React JS Documentation:
+
+Official React Documentation:
+https://reactjs.org/ The official React documentation is the best place to start learning React. It covers everything from basics to advanced topics.
+React Getting Started Guide:
+https://reactjs.org/docs/getting-started.html: This page provides a step-by-step guide to help you set up and get started with React.
+React Components and Props:
+https://reactjs.org/docs/components-and-props.html: Learn about components and props in React, a fundamental concept in building React applications.
+React State and Lifecycle:
+https://reactjs.org/docs/state-and-lifecycle.html: Understand how to manage component state and lifecycle methods in React.
+React Hooks:
+https://reactjs.org/docs/hooks-intro.html: Learn about Hooks, a feature introduced in React 16.8 to use state and other features in functional components.
+React Router:
+https://reactrouter.com/: React Router is a standard library for routing in React. This documentation provides comprehensive information on how to handle routing in your React application.
+Redux (State Management):
+https://redux.js.org/: If you're looking to manage the state of your application, Redux is a popular choice in the React ecosystem. This documentation guides you through using Redux in your React application.
+Styled Components:
+https://styled-components.com/docs: Styled Components is a popular CSS-in-JS library that allows you to style React components. This documentation provides information on using styled components effectively.
+Jest (Testing Framework):
+https://jestjs.io/docs/en/getting-started: Jest is a widely used testing framework for React applications. Learn how to set up and write tests for your React components.
+React Native (for Mobile Development):
+https://reactnative.dev/docs/getting-started: If you're interested in mobile development, React Native allows you to build mobile apps using React. This documentation will guide you through the setup and development process.
+Next.js (React Framework for Server-Side Rendering):
+https://nextjs.org/docs/getting-started is a popular React framework for building server-side rendered React applications. Learn how to get started and build applications with Next.js.
