@@ -4,18 +4,33 @@ import './Login.css'; // Import the CSS file for styling
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [incorrectPassword, setIncorrectPassword] = useState(false);
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
+    setIncorrectPassword(false);
   };
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
+    setIncorrectPassword(false);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('Submitted:', { username, password });
+
+    // Check the password (replace with your actual password check logic)
+    const correctPassword = 'abc';
+
+    if (password === correctPassword) {
+      console.log('Login successful:', { username, password });
+    } else {
+      setIncorrectPassword(true);
+    }
+  };
+
+  const handleSignUpClick = () => {
+    window.location.href = 'https://example.com/signup';
   };
 
   return (
@@ -30,7 +45,9 @@ const Login = () => {
           <label>Password:</label>
           <input type="password" value={password} onChange={handlePasswordChange} />
         </div>
+        {incorrectPassword && <div className="error-message">Incorrect password. Please try again.</div>}
         <button type="submit">Login</button>
+        <button type="button" onClick={handleSignUpClick}>Sign Up</button>
       </form>
     </div>
   );
