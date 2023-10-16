@@ -1,64 +1,92 @@
 import React, { useState } from 'react';
+import './ProfilePage.css';
 
 const ProfilePage = () => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [userIcon, setUserIcon] = useState('path/to/default/icon');
+  const [userName, setUserName] = useState('Test_name');
+  const [userAbout, setUserAbout] = useState('Something about Test_name...');
+  const [userEmail, setUserEmail] = useState('test@gmail.com');
+  const [password, setPassword] = useState('test_password');
+  const [newEmail, setNewEmail] = useState('test_email');
+  const [preferences, setPreferences] = useState('test Preferences');
 
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
+  const handleIconChange = (event) => {
+    // Handle user icon change logic here
+    // Update userIcon state accordingly
+  };
+
+  const handleUserNameChange = (event) => {
+    setUserName(event.target.value);
+  };
+
+  const handleUserAboutChange = (event) => {
+    setUserAbout(event.target.value);
   };
 
   const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+    setNewEmail(event.target.value);
   };
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
 
-  const handleConfirmPasswordChange = (event) => {
-    setConfirmPassword(event.target.value);
+  const handlePreferencesChange = (event) => {
+    setPreferences(event.target.value);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // You can add validation logic here
-    console.log('Form submitted:', { username, email, password, confirmPassword });
+  const handleSaveChanges = () => {
+    // Handle saving changes to the server/database
+  };
+  const handleGoBack = () => {
+    // Handle navigation back logic here
+    console.log('Navigate back to the main page');
   };
 
   return (
-    <div>
-      <h1>Profile Page</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Avatar:
-          {/* Add avatar component or input for avatar */}
-        </label>
-        <br />
-        <label>
-          Username:
-          <input type="text" value={username} onChange={handleUsernameChange} />
-        </label>
-        <br />
-        <label>
-          Email:
-          <input type="email" value={email} onChange={handleEmailChange} />
-        </label>
-        <br />
-        <label>
-          Password:
+    <div className="profile-page">
+      <div className="header">
+        <div className="left-header">
+          Help Me Decide
+        </div>
+        <div className="right-header">
+          <button onClick={handleGoBack}>Back</button>
+        </div>
+      </div>
+
+      <div className="user-info">
+        <div className="user-icon">
+          <img src={userIcon} alt="User Icon" />
+          <input type="file" onChange={handleIconChange} />
+        </div>
+        <div className="user-details">
+          <input type="text" value={userName} onChange={handleUserNameChange} />
+          <textarea value={userAbout} onChange={handleUserAboutChange} />
+          <p>{userEmail}</p>
+        </div>
+      </div>
+
+      <div className="sections">
+        <div className="section">
+          <h2>Password</h2>
+          <p>{password}</p>
           <input type="password" value={password} onChange={handlePasswordChange} />
-        </label>
-        <br />
-        <label>
-          Confirm Password:
-          <input type="password" value={confirmPassword} onChange={handleConfirmPasswordChange} />
-        </label>
-        <br />
-        <button type="submit">Save Changes</button>
-      </form>
+        </div>
+
+        <div className="section">
+          <h2>Email</h2>
+          <p>{newEmail}</p>
+          <input type="email" value={newEmail} onChange={handleEmailChange} />
+        </div>
+
+        <div className="section">
+          <h2>Preferences</h2>
+          <p>{preferences}</p>
+          <textarea value={preferences} onChange={handlePreferencesChange} />
+        </div>
+      </div>
+
+      <button onClick={handleSaveChanges}>Save Changes</button>
     </div>
   );
 };
