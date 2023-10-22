@@ -1,0 +1,66 @@
+import React, { useState } from 'react';
+
+const QuestionForm = () => {
+  const [question, setQuestion] = useState('');
+  const [options, setOptions] = useState(['', '', '', '']);
+  const [selectedColor, setSelectedColor] = useState('');
+
+  const handleOptionChange = (index, value) => {
+    const newOptions = [...options];
+    newOptions[index] = value;
+    setOptions(newOptions);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Create a new question object
+    const newQuestion = {
+      question,
+      options,
+      color: selectedColor,
+      votes: 0,
+    };
+
+    console.log(newQuestion);
+  };
+
+  return (
+    <div>
+      <h2>Post a Question</h2>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="question">Question:</label>
+        <input
+          type="text"
+          id="question"
+          value={question}
+          onChange={(e) => setQuestion(e.target.value)}
+          required
+        />
+
+        <label>Options:</label>
+        {options.map((option, index) => (
+          <input
+            type="text"
+            key={index}
+            value={option}
+            onChange={(e) => handleOptionChange(index, e.target.value)}
+            required
+          />
+        ))}
+
+        <label>Select Color:</label>
+        <div className="color-options">
+          
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+
+
+  
+};
+
+export default QuestionForm;
