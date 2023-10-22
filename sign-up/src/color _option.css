@@ -1,0 +1,43 @@
+/* Add this CSS to your component or a separate CSS file */
+.color-options {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .color-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin: 5px;
+    cursor: pointer;
+    /* Add background color for each color option */
+  }
+  
+  /* Style the oval plate */
+  .oval-plate {
+    /* Add your styling for the oval plate here */
+  }
+
+
+
+  .rounded-input-label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .rounded-input {
+    width: 50%; /* Make it longer */
+    height: 100px; /* Adjust the height as needed */
+    padding: 10px;
+    border: 2px solid #333; /* You can change the border color */
+    border-radius: 15px; /* Adjust the border radius to control the roundness */
+    font-size: 16px;
+    transition: border-color 0.3s, background-color 0.3s; /* Add background-color transition */
+    background-color: #92dcff; /* Set the background color */
+    border-color: #ffffff; /* Change the border color on focus */
+  }
+  
+  .rounded-input:focus {
+    outline: none;
+   
+  }

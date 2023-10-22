@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <nav class="navbar">
+      <ul>
+        <a href="#">Help We decide</a>
+
+      </ul>
+    </nav>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/sign_up.css">
+  </head>
+  <body>
+    
+    <div id="root"></div>
+
+    
+
+    <script src="src/index.jsx"></script>
+
+      <form action="re.php" method="post">
+        <h1>Register</h1>
+        <div class="form-group">
+          <label for="username"> Enter your username(min 5 characters):</label>
+
+          <input type="text" id="username" name="username">
+        </div>
+        <div class="form-group">
+          <label for="userPwd">Enter your password(min 5 characters with number):</label>
+          <input type="password" id="userPwd" name="userPwd">
+        </div>
+        <div class="form-group">
+          <label for="reuserPwd">Confirm your password:</label>
+          <input type="password" id="reuserPwd" name="reuserPwd">
+
+        </div>
+
+        <div class="form-pp"></div>
+          <label for="pp">
+            <ul>By sign up, I have read and agree to the <a href="#"> 
+              terms of service</a> and
+              <a href="#"> 
+                privacy policy</a>
+    
+            </ul>
+          </label>
+        </div>
+
+
+        <a href="login.html">
+          <input type="button" value="Back to log in">
+        </a>
+
+
+        <input type="submit" value="Sign up">
+
+      </form>
+      
+      <script src="src/index.jsx"></script>
+  </body>
+</html>
