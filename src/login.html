@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="Login.css"> <!-- Include the CSS file for styling -->
+</head>
+<body>
+    <div class="login-container">
+        <h2>Help me decide</h2>
+        <form id="login-form">
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" />
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" />
+            </div>
+            <div class="error-message" id="error-message" style="display: none;">Incorrect password. Please try again.</div>
+            <button type="submit">Login</button>
+            <button type="button" id="sign-up-button">Sign Up</button>
+        </form>
+    </div>
+    <script>
+        const incorrectPassword = document.getElementById("error-message");
+        const loginForm = document.getElementById("login-form");
+        const successURL = 'https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442y/login_page/decide_mainpage.html';
+
+        loginForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            // Get the username and password from the form
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Send a request to your backend for authentication
+            fetch('/your-login-endpoint', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, password }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    console.log('Login successful');
+                    window.location.href = successURL;
+                } else {
+                    incorrectPassword.style.display = "block";
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+
+        document.getElementById("sign-up-button").addEventListener("click", function () {
+            window.location.href = 'https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442y/sign_up_page/';
+        });
+    </script>
+</body>
+</html>
