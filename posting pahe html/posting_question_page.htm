@@ -1,0 +1,183 @@
+<!DOCTYPE htm1>
+<!-- saved from url=(0022)http://localhost:3000/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.g">
+  <link rel="stylesheet" href="./posting_question_page_files/index.css">
+<script defer="" src="./posting_question_page_files/bundle.js.下载"></script><style>body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9pbmRleC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxTQUFTO0VBQ1Q7O2NBRVk7RUFDWixtQ0FBbUM7RUFDbkMsa0NBQWtDO0FBQ3BDOztBQUVBO0VBQ0U7YUFDVztBQUNiIiwic291cmNlc0NvbnRlbnQiOlsiYm9keSB7XG4gIG1hcmdpbjogMDtcbiAgZm9udC1mYW1pbHk6IC1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgJ1NlZ29lIFVJJywgJ1JvYm90bycsICdPeHlnZW4nLFxuICAgICdVYnVudHUnLCAnQ2FudGFyZWxsJywgJ0ZpcmEgU2FucycsICdEcm9pZCBTYW5zJywgJ0hlbHZldGljYSBOZXVlJyxcbiAgICBzYW5zLXNlcmlmO1xuICAtd2Via2l0LWZvbnQtc21vb3RoaW5nOiBhbnRpYWxpYXNlZDtcbiAgLW1vei1vc3gtZm9udC1zbW9vdGhpbmc6IGdyYXlzY2FsZTtcbn1cblxuY29kZSB7XG4gIGZvbnQtZmFtaWx5OiBzb3VyY2UtY29kZS1wcm8sIE1lbmxvLCBNb25hY28sIENvbnNvbGFzLCAnQ291cmllciBOZXcnLFxuICAgIG1vbm9zcGFjZTtcbn1cbiJdLCJzb3VyY2VSb290IjoiIn0= */</style><style>.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+body {
+  background: linear-gradient(125deg, #FFFFFF 1%,#5CAED1 30%, #06192B);
+  padding: 0px;
+  margin: 0;
+  height: 100vh;
+}
+
+
+
+
+.voting-options {
+  display: flex; /* Set it to flex to make them in a row */
+  flex-direction: column; /* Change the flex direction to column */
+  align-items: center; /* Center-align the items vertically */
+  margin-top: -175px;
+  
+}
+
+.voting-options input {
+  height: 40px; 
+  width: 500px;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  background: linear-gradient(125deg, #5CAED1 1%, #41a1ca 30%, #26799c);
+  color: rgba(255, 255, 255, 0.938);
+  font-size: 30px;
+  border: 1px solid white;
+}
+
+
+.voting-options label {
+  color: rgb(255, 255, 255); /* Set the text color to white */
+  font-size: 25px; 
+  padding-bottom: 5px;
+}
+
+
+button {
+  background: rgba(19, 18, 18, 0.651);
+  color: white;
+  border: 1px solid white;
+  border-radius: 10px; /* Adjust the border radius as needed */
+  margin-top: 10px;
+}
+
+
+
+/* Add this CSS to your component or a separate CSS file */
+
+  
+  
+.color-options {
+
+  background: #e2dede8e;
+  padding: 10px;
+  border-radius: 30px;
+  width: 140px;
+  margin-left: 600px; 
+  margin-top: 20px;
+}
+
+.color-table {
+  width: 100%;
+  padding-left: 30px;
+}
+
+.color-table td {
+  width: 50%;
+  
+}
+
+.color-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.select-color-label {
+  color: rgb(255, 255, 255); /* Set the text color to white */
+  font-size: 25px; 
+  
+}
+
+
+
+
+.rounded-input-label {
+  display: block;
+  margin-bottom: 5px;
+  color: white;
+  font-size: 40px;
+}
+
+.rounded-input {
+  width: 70%; /* Make it longer */
+  height: 500px; /* Adjust the height as needed */
+  border: 2px solid #333; /* You can change the border color */
+  border-radius: 50px; /* Adjust the border radius to control the roundness */
+  font-size: 50px;
+  transition: border-color 0.3s, background-color 0.3s; /* Add background-color transition */
+  background-color: #92dcff; /* Set the background color */
+  border-color: #ffffff; /* Change the border color on focus */
+  padding-bottom: 400px;
+  color: rgba(255, 255, 255, 0.938);
+}
+
+.rounded-input:focus {
+  outline: none;
+ 
+}
+
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9BcHAuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0UsY0FBYztFQUNkLG9CQUFvQjtBQUN0Qjs7QUFFQTtFQUNFO0lBQ0UsNENBQTRDO0VBQzlDO0FBQ0Y7O0FBRUE7RUFDRSx5QkFBeUI7RUFDekIsaUJBQWlCO0VBQ2pCLGFBQWE7RUFDYixzQkFBc0I7RUFDdEIsbUJBQW1CO0VBQ25CLHVCQUF1QjtFQUN2Qiw2QkFBNkI7RUFDN0IsWUFBWTtBQUNkOztBQUVBO0VBQ0UsY0FBYztBQUNoQjs7QUFFQTtFQUNFO0lBQ0UsdUJBQXVCO0VBQ3pCO0VBQ0E7SUFDRSx5QkFBeUI7RUFDM0I7QUFDRjs7O0FBR0E7RUFDRSxvRUFBb0U7RUFDcEUsWUFBWTtFQUNaLFNBQVM7RUFDVCxhQUFhO0FBQ2Y7Ozs7O0FBS0E7RUFDRSxhQUFhLEVBQUUseUNBQXlDO0VBQ3hELHNCQUFzQixFQUFFLHdDQUF3QztFQUNoRSxtQkFBbUIsRUFBRSxzQ0FBc0M7RUFDM0Qsa0JBQWtCOztBQUVwQjs7QUFFQTtFQUNFLFlBQVk7RUFDWixZQUFZO0VBQ1osbUJBQW1CO0VBQ25CLG1CQUFtQjtFQUNuQixxRUFBcUU7RUFDckUsaUNBQWlDO0VBQ2pDLGVBQWU7RUFDZix1QkFBdUI7QUFDekI7OztBQUdBO0VBQ0UseUJBQXlCLEVBQUUsZ0NBQWdDO0VBQzNELGVBQWU7RUFDZixtQkFBbUI7QUFDckI7OztBQUdBO0VBQ0UsbUNBQW1DO0VBQ25DLFlBQVk7RUFDWix1QkFBdUI7RUFDdkIsbUJBQW1CLEVBQUUsdUNBQXVDO0VBQzVELGdCQUFnQjtBQUNsQjs7OztBQUlBLDBEQUEwRDs7OztBQUkxRDs7RUFFRSxxQkFBcUI7RUFDckIsYUFBYTtFQUNiLG1CQUFtQjtFQUNuQixZQUFZO0VBQ1osa0JBQWtCO0VBQ2xCLGdCQUFnQjtBQUNsQjs7QUFFQTtFQUNFLFdBQVc7RUFDWCxrQkFBa0I7QUFDcEI7O0FBRUE7RUFDRSxVQUFVOztBQUVaOztBQUVBO0VBQ0UsV0FBVztFQUNYLFlBQVk7RUFDWixrQkFBa0I7RUFDbEIsZUFBZTtBQUNqQjtBQUNBO0VBQ0UseUJBQXlCLEVBQUUsZ0NBQWdDO0VBQzNELGVBQWU7O0FBRWpCOzs7OztBQUtBO0VBQ0UsY0FBYztFQUNkLGtCQUFrQjtFQUNsQixZQUFZO0VBQ1osZUFBZTtBQUNqQjs7QUFFQTtFQUNFLFVBQVUsRUFBRSxtQkFBbUI7RUFDL0IsYUFBYSxFQUFFLGdDQUFnQztFQUMvQyxzQkFBc0IsRUFBRSxvQ0FBb0M7RUFDNUQsbUJBQW1CLEVBQUUsc0RBQXNEO0VBQzNFLGVBQWU7RUFDZixvREFBb0QsRUFBRSxvQ0FBb0M7RUFDMUYseUJBQXlCLEVBQUUsNkJBQTZCO0VBQ3hELHFCQUFxQixFQUFFLHFDQUFxQztFQUM1RCxxQkFBcUI7RUFDckIsaUNBQWlDO0FBQ25DOztBQUVBO0VBQ0UsYUFBYTs7QUFFZiIsInNvdXJjZXNDb250ZW50IjpbIi5BcHAge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG5cbi5BcHAtbG9nbyB7XG4gIGhlaWdodDogNDB2bWluO1xuICBwb2ludGVyLWV2ZW50czogbm9uZTtcbn1cblxuQG1lZGlhIChwcmVmZXJzLXJlZHVjZWQtbW90aW9uOiBuby1wcmVmZXJlbmNlKSB7XG4gIC5BcHAtbG9nbyB7XG4gICAgYW5pbWF0aW9uOiBBcHAtbG9nby1zcGluIGluZmluaXRlIDIwcyBsaW5lYXI7XG4gIH1cbn1cblxuLkFwcC1oZWFkZXIge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjgyYzM0O1xuICBtaW4taGVpZ2h0OiAxMDB2aDtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGZvbnQtc2l6ZTogY2FsYygxMHB4ICsgMnZtaW4pO1xuICBjb2xvcjogd2hpdGU7XG59XG5cbi5BcHAtbGluayB7XG4gIGNvbG9yOiAjNjFkYWZiO1xufVxuXG5Aa2V5ZnJhbWVzIEFwcC1sb2dvLXNwaW4ge1xuICBmcm9tIHtcbiAgICB0cmFuc2Zvcm06IHJvdGF0ZSgwZGVnKTtcbiAgfVxuICB0byB7XG4gICAgdHJhbnNmb3JtOiByb3RhdGUoMzYwZGVnKTtcbiAgfVxufVxuXG5cbmJvZHkge1xuICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQoMTI1ZGVnLCAjRkZGRkZGIDElLCM1Q0FFRDEgMzAlLCAjMDYxOTJCKTtcbiAgcGFkZGluZzogMHB4O1xuICBtYXJnaW46IDA7XG4gIGhlaWdodDogMTAwdmg7XG59XG5cblxuXG5cbi52b3Rpbmctb3B0aW9ucyB7XG4gIGRpc3BsYXk6IGZsZXg7IC8qIFNldCBpdCB0byBmbGV4IHRvIG1ha2UgdGhlbSBpbiBhIHJvdyAqL1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uOyAvKiBDaGFuZ2UgdGhlIGZsZXggZGlyZWN0aW9uIHRvIGNvbHVtbiAqL1xuICBhbGlnbi1pdGVtczogY2VudGVyOyAvKiBDZW50ZXItYWxpZ24gdGhlIGl0ZW1zIHZlcnRpY2FsbHkgKi9cbiAgbWFyZ2luLXRvcDogLTE3NXB4O1xuICBcbn1cblxuLnZvdGluZy1vcHRpb25zIGlucHV0IHtcbiAgaGVpZ2h0OiA0MHB4OyBcbiAgd2lkdGg6IDUwMHB4O1xuICBtYXJnaW4tYm90dG9tOiAxMHB4O1xuICBib3JkZXItcmFkaXVzOiAxNXB4O1xuICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQoMTI1ZGVnLCAjNUNBRUQxIDElLCAjNDFhMWNhIDMwJSwgIzI2Nzk5Yyk7XG4gIGNvbG9yOiByZ2JhKDI1NSwgMjU1LCAyNTUsIDAuOTM4KTtcbiAgZm9udC1zaXplOiAzMHB4O1xuICBib3JkZXI6IDFweCBzb2xpZCB3aGl0ZTtcbn1cblxuXG4udm90aW5nLW9wdGlvbnMgbGFiZWwge1xuICBjb2xvcjogcmdiKDI1NSwgMjU1LCAyNTUpOyAvKiBTZXQgdGhlIHRleHQgY29sb3IgdG8gd2hpdGUgKi9cbiAgZm9udC1zaXplOiAyNXB4OyBcbiAgcGFkZGluZy1ib3R0b206IDVweDtcbn1cblxuXG5idXR0b24ge1xuICBiYWNrZ3JvdW5kOiByZ2JhKDE5LCAxOCwgMTgsIDAuNjUxKTtcbiAgY29sb3I6IHdoaXRlO1xuICBib3JkZXI6IDFweCBzb2xpZCB3aGl0ZTtcbiAgYm9yZGVyLXJhZGl1czogMTBweDsgLyogQWRqdXN0IHRoZSBib3JkZXIgcmFkaXVzIGFzIG5lZWRlZCAqL1xuICBtYXJnaW4tdG9wOiAxMHB4O1xufVxuXG5cblxuLyogQWRkIHRoaXMgQ1NTIHRvIHlvdXIgY29tcG9uZW50IG9yIGEgc2VwYXJhdGUgQ1NTIGZpbGUgKi9cblxuICBcbiAgXG4uY29sb3Itb3B0aW9ucyB7XG5cbiAgYmFja2dyb3VuZDogI2UyZGVkZThlO1xuICBwYWRkaW5nOiAxMHB4O1xuICBib3JkZXItcmFkaXVzOiAzMHB4O1xuICB3aWR0aDogMTQwcHg7XG4gIG1hcmdpbi1sZWZ0OiA2MDBweDsgXG4gIG1hcmdpbi10b3A6IDIwcHg7XG59XG5cbi5jb2xvci10YWJsZSB7XG4gIHdpZHRoOiAxMDAlO1xuICBwYWRkaW5nLWxlZnQ6IDMwcHg7XG59XG5cbi5jb2xvci10YWJsZSB0ZCB7XG4gIHdpZHRoOiA1MCU7XG4gIFxufVxuXG4uY29sb3ItYnV0dG9uIHtcbiAgd2lkdGg6IDMwcHg7XG4gIGhlaWdodDogMzBweDtcbiAgYm9yZGVyLXJhZGl1czogNTAlO1xuICBjdXJzb3I6IHBvaW50ZXI7XG59XG4uc2VsZWN0LWNvbG9yLWxhYmVsIHtcbiAgY29sb3I6IHJnYigyNTUsIDI1NSwgMjU1KTsgLyogU2V0IHRoZSB0ZXh0IGNvbG9yIHRvIHdoaXRlICovXG4gIGZvbnQtc2l6ZTogMjVweDsgXG4gIFxufVxuXG5cblxuXG4ucm91bmRlZC1pbnB1dC1sYWJlbCB7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBtYXJnaW4tYm90dG9tOiA1cHg7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgZm9udC1zaXplOiA0MHB4O1xufVxuXG4ucm91bmRlZC1pbnB1dCB7XG4gIHdpZHRoOiA3MCU7IC8qIE1ha2UgaXQgbG9uZ2VyICovXG4gIGhlaWdodDogNTAwcHg7IC8qIEFkanVzdCB0aGUgaGVpZ2h0IGFzIG5lZWRlZCAqL1xuICBib3JkZXI6IDJweCBzb2xpZCAjMzMzOyAvKiBZb3UgY2FuIGNoYW5nZSB0aGUgYm9yZGVyIGNvbG9yICovXG4gIGJvcmRlci1yYWRpdXM6IDUwcHg7IC8qIEFkanVzdCB0aGUgYm9yZGVyIHJhZGl1cyB0byBjb250cm9sIHRoZSByb3VuZG5lc3MgKi9cbiAgZm9udC1zaXplOiA1MHB4O1xuICB0cmFuc2l0aW9uOiBib3JkZXItY29sb3IgMC4zcywgYmFja2dyb3VuZC1jb2xvciAwLjNzOyAvKiBBZGQgYmFja2dyb3VuZC1jb2xvciB0cmFuc2l0aW9uICovXG4gIGJhY2tncm91bmQtY29sb3I6ICM5MmRjZmY7IC8qIFNldCB0aGUgYmFja2dyb3VuZCBjb2xvciAqL1xuICBib3JkZXItY29sb3I6ICNmZmZmZmY7IC8qIENoYW5nZSB0aGUgYm9yZGVyIGNvbG9yIG9uIGZvY3VzICovXG4gIHBhZGRpbmctYm90dG9tOiA0MDBweDtcbiAgY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC45MzgpO1xufVxuXG4ucm91bmRlZC1pbnB1dDpmb2N1cyB7XG4gIG91dGxpbmU6IG5vbmU7XG4gXG59XG5cbiJdLCJzb3VyY2VSb290IjoiIn0= */</style><style>
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsInNvdXJjZVJvb3QiOiIifQ== */</style><style>
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsInNvdXJjZVJvb3QiOiIifQ== */</style></head>
+<body>
+  <div id="root"><div class="App"><div><h2>Post a Question</h2><form><label for="question" class="rounded-input-label">Question:</label><input type="text" id="question" required="" class="rounded-input" value=""><div class="color-options"><label class="select-color-label">Select Color:</label><div class="color-table"><table><tbody><tr><td><button class="color-button" style="background-color: rgb(255, 87, 51);"></button></td><td><button class="color-button" style="background-color: rgb(51, 255, 87);"></button></td></tr><tr><td><button class="color-button" style="background-color: rgb(87, 51, 255);"></button></td><td><button class="color-button" style="background-color: rgb(255, 255, 51);"></button></td></tr><tr><td><button class="color-button" style="background-color: rgb(51, 255, 255);"></button></td><td><button class="color-button" style="background-color: rgb(255, 51, 255);"></button></td></tr></tbody></table></div></div><div class="voting-options"><label>Voting Options:</label><input type="text" value=""><input type="text" value=""><button type="button">Add More</button></div><button type="submit">Submit</button></form></div></div></div>
+  <script src="./posting_question_page_files/index.js.下载"></script>
+  <script src="./posting_question_page_files/App.js.下载"></script>
+  <script src="./posting_question_page_files/posting_page.js.下载"></script>
+  <script src="./posting_question_page_files/question_form.js.下载"></script>
+
+</body></html>
