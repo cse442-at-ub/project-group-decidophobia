@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <nav class="navbar">
+      <ul>
+        <a href="#">Help We decide</a>
+
+      </ul>
+    </nav>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/posting_page.css">
+  </head>
+  <body>
+    
+<div>
+         
+  <form action="post.php" method="post">
+    <div class="question_t">
+      Post a Question
+    </div>
+   <input type="text" name="ques" class="ques"  placeholder="the char limit is 50" maxlength="50">
+
+   <div class="an_t">
+    Enter your Answer
+  </div>
+
+   <div class="an_input">
+    <input type="text" name="an1" class="an">
+    <input type="text" name="an2" class="an">
+    <input type="text" name="an3" class="an">
+    <input type="text" name="an4" class="an">
+    <input type="text" name="an5" class="an">
+   </div>
+
+   <div class="color-options">
+    <label class="select-color-label">Select Color:</label>
+    <div class="color-table">
+
+          <input type="hidden" name="selected_color" id="selected_color" value="">
+
+          <button type="button" class="color-button" data-color="red"    style="background-color: red;"   ></button>
+          <button type="button" class="color-button" data-color="green"  style="background-color: green;" ></button>
+          <button type="button" class="color-button" data-color="blue"   style="background-color: blue;"  ></button>
+          <button type="button" class="color-button" data-color="yellow" style="background-color: yellow;"></button>
+          <button type="button" class="color-button" data-color="orange" style="background-color: orange;"></button>
+          <button type="button" class="color-button" data-color="purple" style="background-color: purple;"></button>
+
+    </div>
+  </div>
+
+  <div class="tag">
+
+    <label for="tag">Tag:</label>
+    <select id="tag" name="tag">
+        <option value="Random">Random</option>
+        <option value="School">School</option>
+        <option value="Food">Food</option>
+        <option value="Music">Music</option>
+        <option value="Life">Life</option>
+        <option value="Game">Game</option>
+    </select>  <br>
+
+  </div>
+
+
+  <div class="anony">
+    <label>
+      <input type="checkbox" id="checkbox" name="anony"> Post anonymously
+    </label>
+  </div>
+
+
+  <div class="sub">
+    <input type="submit" value="submit" name="submit_button">
+  </div>
+  
+  </form>
+
+</div>
+      
+      <script src="src/post.jsx"></script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          // Get all the buttons with the class 'color-button'
+          var buttons = document.querySelectorAll('.color-button');
+
+          // Loop through each button
+          buttons.forEach(function(button) {
+            // Add a click event listener to each button
+            button.addEventListener('click', function() {
+              // This function runs whenever a button is clicked
+              // Get the color from the data-color attribute of the clicked button
+              var color = button.getAttribute('data-color');
+
+              // Find the hidden input field and set its value to the selected color
+              document.getElementById('selected_color').value = color;
+            });
+          });
+        });
+      </script>
+  </body>
+</html>
+
