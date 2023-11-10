@@ -17,7 +17,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _App_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.css */ "./src/App.css");
 /* harmony import */ var _main_file_header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./main_file_header */ "./src/main_file_header.js");
 /* harmony import */ var _Questionlist__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Questionlist */ "./src/Questionlist.js");
-/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-dev-runtime */ "./node_modules/react/jsx-dev-runtime.js");
+/* harmony import */ var _Search_icon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Search_icon */ "./src/Search_icon.js");
+/* harmony import */ var _main_searchbar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./main_searchbar */ "./src/main_searchbar.js");
+/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-dev-runtime */ "./node_modules/react/jsx-dev-runtime.js");
 /* provided dependency */ var __react_refresh_utils__ = __webpack_require__(/*! ./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js */ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js");
 __webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ./node_modules/react-refresh/runtime.js */ "./node_modules/react-refresh/runtime.js");
 
@@ -28,97 +30,120 @@ var _jsxFileName = "D:\\Downloads\\CSE442\\help_decide_mainpage\\src\\App.js",
 
 
 
+
+
 function App() {
   _s();
-  // Sample list of questions (replace with your actual data)
-  const [questions] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
-    id: 1,
-    title: 'Question 1',
-    color: '#007bff'
-  }, {
-    id: 2,
-    title: 'Question 2',
-    color: '#ff5733'
-  }, {
-    id: 3,
-    title: 'Question 3',
-    color: '#148F77'
-  }, {
-    id: 4,
-    title: 'Question 4',
-    color: '#43ff57'
-  }, {
-    id: 5,
-    title: 'Question 5',
-    color: '#633974'
-  }, {
-    id: 6,
-    title: 'Question 6',
-    color: '#F1C40F'
-  }, {
-    id: 7,
-    title: 'Question 7',
-    color: '#D0D3D4'
-  }, {
-    id: 8,
-    title: 'Question 8',
-    color: '#F39C12'
-  }]);
-  const handleQuestionClick = questionId => {
-    alert(`Clicked on question with ID ${questionId}`);
+  const [questions, setQuestions] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+  const [isLoading, setIsLoading] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
+  const [isSearchBarVisible, setIsSearchBarVisible] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const handleQuestionClick = id => {
+    alert(`Clicked on question with ID ${id}`);
   };
-  return /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxDEV)("div", {
+  const handleSearchClick = () => {
+    setIsSearchBarVisible(true);
+  };
+  const handleSearch = selectedTag => {
+    setIsLoading(true);
+    fetch(`https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442y/main%20page%20html/search.php?selectedTag=${selectedTag}`).then(response => {
+      console.log('Response Status:', response.status);
+      return response.json();
+    }).then(data => {
+      console.log('Data:', data);
+      const formattedSearch = data.map(item => ({
+        id: item.QuestID,
+        title: item.Question,
+        color: `rgb(${item.Colour})`,
+        creator: item['Creator'],
+        creatorId: item['Creator ID'],
+        time: item.Time,
+        tag: item.tag
+      }));
+      setQuestions(formattedSearch);
+    }).catch(error => {
+      console.error('Error fetching data:', error);
+    }).finally(() => {
+      setIsLoading(false);
+      setIsSearchBarVisible(false);
+    });
+  };
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    // Fetch the question data from the PHP script
+    fetch('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442y/main%20page%20html/mainpage.php').then(response => response.json()).then(data => {
+      const formattedQuestions = data.map(item => {
+        return {
+          id: item.QuestID,
+          title: item.Question,
+          color: `rgb(${item.Colour})`,
+          creator: item['Creator'],
+          creatorId: item['Creator ID'],
+          time: item.Time,
+          tag: item.tag
+        };
+      });
+      setQuestions(formattedQuestions);
+    }).catch(error => {
+      console.error('Error fetching data:', error);
+    });
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxDEV)("div", {
     className: "App",
-    children: [/*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxDEV)(_main_file_header__WEBPACK_IMPORTED_MODULE_2__["default"], {}, void 0, false, {
+    children: [/*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxDEV)(_main_file_header__WEBPACK_IMPORTED_MODULE_2__["default"], {}, void 0, false, {
       fileName: _jsxFileName,
-      lineNumber: 30,
+      lineNumber: 87,
       columnNumber: 7
-    }, this), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxDEV)("main", {
-      children: ["'", /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxDEV)("div", {
-        className: "header-title",
-        children: /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxDEV)("h1", {
-          children: "Help me decide"
+    }, this), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxDEV)(_Search_icon__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      onClick: handleSearchClick
+    }, void 0, false, {
+      fileName: _jsxFileName,
+      lineNumber: 88,
+      columnNumber: 7
+    }, this), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxDEV)("main", {
+      children: /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxDEV)("section", {
+        children: [/*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxDEV)("h2", {
+          children: "Recent Questions"
         }, void 0, false, {
           fileName: _jsxFileName,
-          lineNumber: 33,
-          columnNumber: 9
-        }, this)
-      }, void 0, false, {
-        fileName: _jsxFileName,
-        lineNumber: 32,
-        columnNumber: 7
-      }, this), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxDEV)("section", {
-        children: [/*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxDEV)("h2", {
-          children: " "
-        }, void 0, false, {
-          fileName: _jsxFileName,
-          lineNumber: 36,
+          lineNumber: 91,
           columnNumber: 11
-        }, this), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxDEV)(_Questionlist__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        }, this), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxDEV)(_Questionlist__WEBPACK_IMPORTED_MODULE_3__["default"], {
           questions: questions,
           onQuestionClick: handleQuestionClick
         }, void 0, false, {
           fileName: _jsxFileName,
-          lineNumber: 37,
+          lineNumber: 92,
           columnNumber: 11
         }, this)]
       }, void 0, true, {
         fileName: _jsxFileName,
-        lineNumber: 35,
+        lineNumber: 90,
         columnNumber: 9
-      }, this)]
-    }, void 0, true, {
+      }, this)
+    }, void 0, false, {
       fileName: _jsxFileName,
-      lineNumber: 31,
+      lineNumber: 89,
       columnNumber: 7
+    }, this), isSearchBarVisible && /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxDEV)("div", {
+      className: "search-bar-container",
+      children: /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxDEV)(_main_searchbar__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        onSearch: handleSearch
+      }, void 0, false, {
+        fileName: _jsxFileName,
+        lineNumber: 97,
+        columnNumber: 11
+      }, this)
+    }, void 0, false, {
+      fileName: _jsxFileName,
+      lineNumber: 96,
+      columnNumber: 9
     }, this)]
   }, void 0, true, {
     fileName: _jsxFileName,
-    lineNumber: 29,
+    lineNumber: 86,
     columnNumber: 5
   }, this);
 }
-_s(App, "rt99uHk7OJNxyhHkWC77VapfyuY=");
+_s(App, "3LuuKLQApSzUmAvNFe7fK+eJoFw=");
 _c = App;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
 var _c;
@@ -205,6 +230,87 @@ _c = QuestionList;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (QuestionList);
 var _c;
 __webpack_require__.$Refresh$.register(_c, "QuestionList");
+
+const $ReactRefreshModuleId$ = __webpack_require__.$Refresh$.moduleId;
+const $ReactRefreshCurrentExports$ = __react_refresh_utils__.getModuleExports(
+	$ReactRefreshModuleId$
+);
+
+function $ReactRefreshModuleRuntime$(exports) {
+	if (true) {
+		let errorOverlay;
+		if (true) {
+			errorOverlay = false;
+		}
+		let testMode;
+		if (typeof __react_refresh_test__ !== 'undefined') {
+			testMode = __react_refresh_test__;
+		}
+		return __react_refresh_utils__.executeRuntime(
+			exports,
+			$ReactRefreshModuleId$,
+			module.hot,
+			errorOverlay,
+			testMode
+		);
+	}
+}
+
+if (typeof Promise !== 'undefined' && $ReactRefreshCurrentExports$ instanceof Promise) {
+	$ReactRefreshCurrentExports$.then($ReactRefreshModuleRuntime$);
+} else {
+	$ReactRefreshModuleRuntime$($ReactRefreshCurrentExports$);
+}
+
+/***/ }),
+
+/***/ "./src/Search_icon.js":
+/*!****************************!*\
+  !*** ./src/Search_icon.js ***!
+  \****************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.mjs");
+/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-dev-runtime */ "./node_modules/react/jsx-dev-runtime.js");
+/* provided dependency */ var __react_refresh_utils__ = __webpack_require__(/*! ./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js */ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js");
+__webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ./node_modules/react-refresh/runtime.js */ "./node_modules/react-refresh/runtime.js");
+
+var _jsxFileName = "D:\\Downloads\\CSE442\\help_decide_mainpage\\src\\Search_icon.js";
+
+
+
+
+const SearchIcon = ({
+  onClick
+}) => {
+  return /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)("div", {
+    className: "search-icon",
+    onClick: onClick,
+    children: /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxDEV)(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__.FontAwesomeIcon, {
+      icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faSearch
+    }, void 0, false, {
+      fileName: _jsxFileName,
+      lineNumber: 8,
+      columnNumber: 7
+    }, undefined)
+  }, void 0, false, {
+    fileName: _jsxFileName,
+    lineNumber: 7,
+    columnNumber: 5
+  }, undefined);
+};
+_c = SearchIcon;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SearchIcon);
+var _c;
+__webpack_require__.$Refresh$.register(_c, "SearchIcon");
 
 const $ReactRefreshModuleId$ = __webpack_require__.$Refresh$.moduleId;
 const $ReactRefreshCurrentExports$ = __react_refresh_utils__.getModuleExports(
@@ -330,15 +436,13 @@ var _jsxFileName = "D:\\Downloads\\CSE442\\help_decide_mainpage\\src\\main_file_
 
 
 const Header = () => {
-  // Sample user data (replace with your actual user data)
+  // Sample user data (should be replaced with actual user data)
   const user = {
     username: 'Paimon lv.60',
-    avatarUrl: 'https://upload.wikimedia.org/wikipedia/zh/f/fc/%E5%8E%9F%E7%A5%9E_%E5%9C%8B%E9%9A%9B%E7%89%88.jpeg'
+    avatarUrl: __webpack_require__(/*! ./icon/raiden.jpg */ "./src/icon/raiden.jpg")
   };
   const handleAvatarClick = () => {
     // Handle navigation to the user's profile page.
-    // You can use React Router or another routing library for this.
-    // For simplicity, we'll just display an alert for now.
     alert('Clicked on user avatar. Navigate to the user profile page.');
   };
   return /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxDEV)("div", {
@@ -351,21 +455,21 @@ const Header = () => {
         onAvatarClick: handleAvatarClick
       }, void 0, false, {
         fileName: _jsxFileName,
-        lineNumber: 24,
+        lineNumber: 22,
         columnNumber: 9
       }, undefined)
     }, void 0, false, {
       fileName: _jsxFileName,
-      lineNumber: 22,
+      lineNumber: 20,
       columnNumber: 7
     }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxDEV)(_main_page_toolbar__WEBPACK_IMPORTED_MODULE_2__["default"], {}, void 0, false, {
       fileName: _jsxFileName,
-      lineNumber: 31,
+      lineNumber: 29,
       columnNumber: 7
     }, undefined)]
   }, void 0, true, {
     fileName: _jsxFileName,
-    lineNumber: 21,
+    lineNumber: 19,
     columnNumber: 5
   }, undefined);
 };
@@ -509,6 +613,152 @@ _c = Toolbar;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Toolbar);
 var _c;
 __webpack_require__.$Refresh$.register(_c, "Toolbar");
+
+const $ReactRefreshModuleId$ = __webpack_require__.$Refresh$.moduleId;
+const $ReactRefreshCurrentExports$ = __react_refresh_utils__.getModuleExports(
+	$ReactRefreshModuleId$
+);
+
+function $ReactRefreshModuleRuntime$(exports) {
+	if (true) {
+		let errorOverlay;
+		if (true) {
+			errorOverlay = false;
+		}
+		let testMode;
+		if (typeof __react_refresh_test__ !== 'undefined') {
+			testMode = __react_refresh_test__;
+		}
+		return __react_refresh_utils__.executeRuntime(
+			exports,
+			$ReactRefreshModuleId$,
+			module.hot,
+			errorOverlay,
+			testMode
+		);
+	}
+}
+
+if (typeof Promise !== 'undefined' && $ReactRefreshCurrentExports$ instanceof Promise) {
+	$ReactRefreshCurrentExports$.then($ReactRefreshModuleRuntime$);
+} else {
+	$ReactRefreshModuleRuntime$($ReactRefreshCurrentExports$);
+}
+
+/***/ }),
+
+/***/ "./src/main_searchbar.js":
+/*!*******************************!*\
+  !*** ./src/main_searchbar.js ***!
+  \*******************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-dev-runtime */ "./node_modules/react/jsx-dev-runtime.js");
+/* provided dependency */ var __react_refresh_utils__ = __webpack_require__(/*! ./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js */ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js");
+__webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ./node_modules/react-refresh/runtime.js */ "./node_modules/react-refresh/runtime.js");
+
+var _jsxFileName = "D:\\Downloads\\CSE442\\help_decide_mainpage\\src\\main_searchbar.js",
+  _s = __webpack_require__.$Refresh$.signature();
+
+
+const SearchBar = ({
+  onSearch
+}) => {
+  _s();
+  const [selectedTag, setSelectedTag] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('Random');
+  const handleTagChange = event => {
+    setSelectedTag(event.target.value);
+  };
+  const handleSearch = () => {
+    onSearch(selectedTag);
+  };
+  return /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxDEV)("div", {
+    className: "search-bar",
+    children: [/*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxDEV)("label", {
+      htmlFor: "tag",
+      children: "Tag:"
+    }, void 0, false, {
+      fileName: _jsxFileName,
+      lineNumber: 16,
+      columnNumber: 7
+    }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxDEV)("select", {
+      id: "tag",
+      name: "tag",
+      value: selectedTag,
+      onChange: handleTagChange,
+      children: [/*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxDEV)("option", {
+        value: "Random",
+        children: "Random"
+      }, void 0, false, {
+        fileName: _jsxFileName,
+        lineNumber: 18,
+        columnNumber: 9
+      }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxDEV)("option", {
+        value: "School",
+        children: "School"
+      }, void 0, false, {
+        fileName: _jsxFileName,
+        lineNumber: 19,
+        columnNumber: 9
+      }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxDEV)("option", {
+        value: "Food",
+        children: "Food"
+      }, void 0, false, {
+        fileName: _jsxFileName,
+        lineNumber: 20,
+        columnNumber: 9
+      }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxDEV)("option", {
+        value: "Music",
+        children: "Music"
+      }, void 0, false, {
+        fileName: _jsxFileName,
+        lineNumber: 21,
+        columnNumber: 9
+      }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxDEV)("option", {
+        value: "Life",
+        children: "Life"
+      }, void 0, false, {
+        fileName: _jsxFileName,
+        lineNumber: 22,
+        columnNumber: 9
+      }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxDEV)("option", {
+        value: "Game",
+        children: "Game"
+      }, void 0, false, {
+        fileName: _jsxFileName,
+        lineNumber: 23,
+        columnNumber: 9
+      }, undefined)]
+    }, void 0, true, {
+      fileName: _jsxFileName,
+      lineNumber: 17,
+      columnNumber: 7
+    }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxDEV)("button", {
+      onClick: handleSearch,
+      children: "Search"
+    }, void 0, false, {
+      fileName: _jsxFileName,
+      lineNumber: 25,
+      columnNumber: 7
+    }, undefined)]
+  }, void 0, true, {
+    fileName: _jsxFileName,
+    lineNumber: 15,
+    columnNumber: 5
+  }, undefined);
+};
+_s(SearchBar, "bQbu/fIHWmeU8kiL1b9mS06o7LI=");
+_c = SearchBar;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SearchBar);
+var _c;
+__webpack_require__.$Refresh$.register(_c, "SearchBar");
 
 const $ReactRefreshModuleId$ = __webpack_require__.$Refresh$.moduleId;
 const $ReactRefreshCurrentExports$ = __react_refresh_utils__.getModuleExports(
@@ -42446,7 +42696,42 @@ body {
   font-weight: bold;
   cursor: pointer;
   color: #f5f6f7;
-}`, "",{"version":3,"sources":["webpack://./src/App.css"],"names":[],"mappings":"AAAA;EACE,kBAAkB;AACpB;AACA;EACE,cAAc;EACd,oBAAoB;AACtB;;AAEA;EACE;IACE,4CAA4C;EAC9C;AACF;;AAEA;EACE,cAAc;AAChB;;AAEA;EACE;IACE,uBAAuB;EACzB;EACA;IACE,yBAAyB;EAC3B;AACF;;;AAGA;EACE,aAAa;EACb,eAAe;EACf,SAAS;EACT,uBAAuB;AACzB;;AAEA;EACE,YAAY,EAAE,iCAAiC;EAC/C,aAAa,EAAE,kCAAkC;EACjD,kBAAkB;EAClB,yBAAyB;EACzB,WAAW;EACX,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,eAAe,EAAE,qCAAqC;EACtD,eAAe;EACf,iCAAiC;EACjC,YAAY,EAAE,0DAA0D;AAC1E;;AAEA;EACE,yBAAyB;AAC3B;;;;AAIA;EACE,yBAAyB;EACzB,WAAW;;AAEb;;AAEA;EACE,eAAe;EACf,2BAA2B;EAC3B,YAAY;EACZ,iBAAiB;EACjB;;AAEF;;;;AAIA;EACE,kBAAkB;EAClB,SAAS;EACT,WAAW;EACX,aAAa;EACb,sBAAsB;EACtB,qBAAqB;EACrB,yBAAyB;EACzB,yBAAyB;EACzB,kBAAkB;EAClB,aAAa;EACb,UAAU;EACV,2BAA2B;EAC3B,aAAa;EACb,gBAAgB;EAChB,oBAAoB;;AAEtB;;AAEA;EACE,iBAAiB,EAAE,oCAAoC;AACzD;;AAEA;EACE,aAAa;EACb,sBAAsB;AACxB;;AAEA;EACE,eAAe;EACf,YAAY;AACd;;AAEA;EACE,yBAAyB;EACzB,cAAc;EACd,kBAAkB;AACpB;;;AAGA;EACE,eAAe;AACjB;;AAEA;EACE,eAAe;EACf,cAAc;EACd,0BAA0B;;AAE5B;;AAEA;EACE,wBAAwB;AAC1B;;AAEA;EACE,oEAAoE,EAAE,8BAA8B;EACpG,YAAY;EACZ,SAAS;EACT,aAAa;AACf;;;;AAIA;EACE,aAAa;EACb,mBAAmB;EACnB,kBAAkB;EAClB,kBAAkB;EAClB,iBAAiB;AACnB;;AAEA;EACE,WAAW;EACX,YAAY;EACZ,kBAAkB;EAClB,eAAe;EACf,0BAA0B;AAC5B;;AAEA;EACE,qBAAqB;AACvB;;AAEA;EACE,iBAAiB;EACjB,gBAAgB;EAChB,eAAe;;EAEf,iBAAiB;EACjB,eAAe;EACf,cAAc;AAChB","sourcesContent":[".App {\n  text-align: center;\n}\n.App-logo {\n  height: 40vmin;\n  pointer-events: none;\n}\n\n@media (prefers-reduced-motion: no-preference) {\n  .App-logo {\n    animation: App-logo-spin infinite 20s linear;\n  }\n}\n\n.App-link {\n  color: #61dafb;\n}\n\n@keyframes App-logo-spin {\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n}\n\n\n.question-list {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 20px;\n  justify-content: center;\n}\n\n.question-bubble {\n  width: 200px; /* Increase the width as needed */\n  height: 200px; /* Increase the height as needed */\n  border-radius: 50%;\n  background-color: #007bff;\n  color: #fff;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 18px; /* Increase the font size as needed */\n  cursor: pointer;\n  transition: background-color 0.3s;\n  margin: 80px; /* Increase the margin to add more space between bubbles */\n}\n\n.question-bubble:hover {\n  background-color: #0056b3;\n}\n\n\n\n.header {\n  background-color: #007bff;\n  color: #fff;\n  \n}\n\n.header-title h1 {\n  font-size: 80px;\n  justify-content: flex-start;\n  color: white;\n  font-weight: bold;\n  top:0\n  \n}\n\n\n\n.toolbar {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n  background-color: #007bff;\n  border: 1px solid #faf6f6;\n  border-radius: 4px;\n  padding: 10px;\n  z-index: 1;\n  transition: max-height 0.3s;\n  max-height: 0;\n  overflow: hidden;\n  padding-bottom: 27px;\n  \n}\n\n.toolbar.active {\n  max-height: 200px; /* Adjust the max height as needed */\n}\n\n.toolbar-options {\n  display: flex;\n  flex-direction: column;\n}\n\n.toolbar-options span {\n  cursor: pointer;\n  padding: 3px;\n}\n\n.toolbar-options span:hover {\n  background-color: #007bff;\n  color: #240404;\n  border-radius: 4px;\n}\n\n\n.toolbar-toggle {\n  cursor: pointer;\n}\n\n.toolbar-toggle svg {\n  font-size: 20px;\n  color: #b3b3b3;\n  transition: transform 0.3s;\n\n}\n\n.toolbar-toggle.active svg {\n  transform: rotate(90deg);\n}\n\nbody {\n  background: linear-gradient(125deg, #FFFFFF 1%,#5CAED1 30%, #06192B); /* Make it white if you need */\n  padding: 0px;\n  margin: 0;\n  height: 100vh;\n}\n\n\n\n.user-info {\n  display: flex;\n  align-items: center;\n  margin-right: auto;\n  padding-left: 30px;\n  padding-top: 30px;\n}\n\n.user-avatar {\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n  cursor: pointer;\n  transition: transform 0.2s;\n}\n\n.user-avatar:hover {\n  transform: scale(1.1);\n}\n\n.username {\n  margin-left: 10px;\n  margin-top: 50px;\n  font-size: 50px;\n  \n  font-weight: bold;\n  cursor: pointer;\n  color: #f5f6f7;\n}"],"sourceRoot":""}]);
+}
+
+
+.search-icon {
+  float: right;
+  margin-right: 200px;
+  margin-top: -75px;
+  cursor: pointer;
+  color: #f5f6f7;
+  font-size: 20px;
+}
+
+.search-bar {
+  margin-top: 12px;
+}
+
+.search-bar label {
+  margin-right: 10px;
+}
+
+.search-bar select {
+  margin-right: 10px;
+}
+
+.search-bar button {
+  background-color: #171c22;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background-color: #78b7fa;
+}`, "",{"version":3,"sources":["webpack://./src/App.css"],"names":[],"mappings":"AAAA;EACE,kBAAkB;AACpB;AACA;EACE,cAAc;EACd,oBAAoB;AACtB;;AAEA;EACE;IACE,4CAA4C;EAC9C;AACF;;AAEA;EACE,cAAc;AAChB;;AAEA;EACE;IACE,uBAAuB;EACzB;EACA;IACE,yBAAyB;EAC3B;AACF;;;AAGA;EACE,aAAa;EACb,eAAe;EACf,SAAS;EACT,uBAAuB;AACzB;;AAEA;EACE,YAAY,EAAE,iCAAiC;EAC/C,aAAa,EAAE,kCAAkC;EACjD,kBAAkB;EAClB,yBAAyB;EACzB,WAAW;EACX,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,eAAe,EAAE,qCAAqC;EACtD,eAAe;EACf,iCAAiC;EACjC,YAAY,EAAE,0DAA0D;AAC1E;;AAEA;EACE,yBAAyB;AAC3B;;;;AAIA;EACE,yBAAyB;EACzB,WAAW;;AAEb;;AAEA;EACE,eAAe;EACf,2BAA2B;EAC3B,YAAY;EACZ,iBAAiB;EACjB;;AAEF;;;;AAIA;EACE,kBAAkB;EAClB,SAAS;EACT,WAAW;EACX,aAAa;EACb,sBAAsB;EACtB,qBAAqB;EACrB,yBAAyB;EACzB,yBAAyB;EACzB,kBAAkB;EAClB,aAAa;EACb,UAAU;EACV,2BAA2B;EAC3B,aAAa;EACb,gBAAgB;EAChB,oBAAoB;;AAEtB;;AAEA;EACE,iBAAiB,EAAE,oCAAoC;AACzD;;AAEA;EACE,aAAa;EACb,sBAAsB;AACxB;;AAEA;EACE,eAAe;EACf,YAAY;AACd;;AAEA;EACE,yBAAyB;EACzB,cAAc;EACd,kBAAkB;AACpB;;;AAGA;EACE,eAAe;AACjB;;AAEA;EACE,eAAe;EACf,cAAc;EACd,0BAA0B;;AAE5B;;AAEA;EACE,wBAAwB;AAC1B;;AAEA;EACE,oEAAoE,EAAE,8BAA8B;EACpG,YAAY;EACZ,SAAS;EACT,aAAa;AACf;;;;AAIA;EACE,aAAa;EACb,mBAAmB;EACnB,kBAAkB;EAClB,kBAAkB;EAClB,iBAAiB;AACnB;;AAEA;EACE,WAAW;EACX,YAAY;EACZ,kBAAkB;EAClB,eAAe;EACf,0BAA0B;AAC5B;;AAEA;EACE,qBAAqB;AACvB;;AAEA;EACE,iBAAiB;EACjB,gBAAgB;EAChB,eAAe;;EAEf,iBAAiB;EACjB,eAAe;EACf,cAAc;AAChB;;;AAGA;EACE,YAAY;EACZ,mBAAmB;EACnB,iBAAiB;EACjB,eAAe;EACf,cAAc;EACd,eAAe;AACjB;;AAEA;EACE,gBAAgB;AAClB;;AAEA;EACE,kBAAkB;AACpB;;AAEA;EACE,kBAAkB;AACpB;;AAEA;EACE,yBAAyB;EACzB,WAAW;EACX,YAAY;EACZ,kBAAkB;EAClB,iBAAiB;EACjB,eAAe;AACjB;;AAEA;EACE,yBAAyB;AAC3B","sourcesContent":[".App {\n  text-align: center;\n}\n.App-logo {\n  height: 40vmin;\n  pointer-events: none;\n}\n\n@media (prefers-reduced-motion: no-preference) {\n  .App-logo {\n    animation: App-logo-spin infinite 20s linear;\n  }\n}\n\n.App-link {\n  color: #61dafb;\n}\n\n@keyframes App-logo-spin {\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n}\n\n\n.question-list {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 20px;\n  justify-content: center;\n}\n\n.question-bubble {\n  width: 200px; /* Increase the width as needed */\n  height: 200px; /* Increase the height as needed */\n  border-radius: 50%;\n  background-color: #007bff;\n  color: #fff;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 18px; /* Increase the font size as needed */\n  cursor: pointer;\n  transition: background-color 0.3s;\n  margin: 80px; /* Increase the margin to add more space between bubbles */\n}\n\n.question-bubble:hover {\n  background-color: #0056b3;\n}\n\n\n\n.header {\n  background-color: #007bff;\n  color: #fff;\n  \n}\n\n.header-title h1 {\n  font-size: 80px;\n  justify-content: flex-start;\n  color: white;\n  font-weight: bold;\n  top:0\n  \n}\n\n\n\n.toolbar {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n  background-color: #007bff;\n  border: 1px solid #faf6f6;\n  border-radius: 4px;\n  padding: 10px;\n  z-index: 1;\n  transition: max-height 0.3s;\n  max-height: 0;\n  overflow: hidden;\n  padding-bottom: 27px;\n  \n}\n\n.toolbar.active {\n  max-height: 200px; /* Adjust the max height as needed */\n}\n\n.toolbar-options {\n  display: flex;\n  flex-direction: column;\n}\n\n.toolbar-options span {\n  cursor: pointer;\n  padding: 3px;\n}\n\n.toolbar-options span:hover {\n  background-color: #007bff;\n  color: #240404;\n  border-radius: 4px;\n}\n\n\n.toolbar-toggle {\n  cursor: pointer;\n}\n\n.toolbar-toggle svg {\n  font-size: 20px;\n  color: #b3b3b3;\n  transition: transform 0.3s;\n\n}\n\n.toolbar-toggle.active svg {\n  transform: rotate(90deg);\n}\n\nbody {\n  background: linear-gradient(125deg, #FFFFFF 1%,#5CAED1 30%, #06192B); /* Make it white if you need */\n  padding: 0px;\n  margin: 0;\n  height: 100vh;\n}\n\n\n\n.user-info {\n  display: flex;\n  align-items: center;\n  margin-right: auto;\n  padding-left: 30px;\n  padding-top: 30px;\n}\n\n.user-avatar {\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n  cursor: pointer;\n  transition: transform 0.2s;\n}\n\n.user-avatar:hover {\n  transform: scale(1.1);\n}\n\n.username {\n  margin-left: 10px;\n  margin-top: 50px;\n  font-size: 50px;\n  \n  font-weight: bold;\n  cursor: pointer;\n  color: #f5f6f7;\n}\n\n\n.search-icon {\n  float: right;\n  margin-right: 200px;\n  margin-top: -75px;\n  cursor: pointer;\n  color: #f5f6f7;\n  font-size: 20px;\n}\n\n.search-bar {\n  margin-top: 12px;\n}\n\n.search-bar label {\n  margin-right: 10px;\n}\n\n.search-bar select {\n  margin-right: 10px;\n}\n\n.search-bar button {\n  background-color: #171c22;\n  color: #fff;\n  border: none;\n  border-radius: 4px;\n  padding: 5px 10px;\n  cursor: pointer;\n}\n\n.search-bar button:hover {\n  background-color: #78b7fa;\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {};
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
@@ -42831,6 +43116,17 @@ if (true) {
 
        /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_5_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_5_use_2_node_modules_source_map_loader_dist_cjs_js_App_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_5_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_5_use_2_node_modules_source_map_loader_dist_cjs_js_App_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_5_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_5_use_2_node_modules_source_map_loader_dist_cjs_js_App_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
 
+
+/***/ }),
+
+/***/ "./src/icon/raiden.jpg":
+/*!*****************************!*\
+  !*** ./src/icon/raiden.jpg ***!
+  \*****************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "static/media/raiden.aeab20f9ad73b464ca9f.jpg";
 
 /***/ }),
 
@@ -57134,7 +57430,7 @@ var icons = {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("a0b4ce3c1c659648be5c")
+/******/ 		__webpack_require__.h = () => ("eb5d917f2b1093d6c576")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */

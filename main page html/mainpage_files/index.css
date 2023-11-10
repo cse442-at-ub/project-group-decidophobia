@@ -9,9 +9,11 @@
   <div id="root"></div>
   <script src="src/index.js"></script>
   <script src="src/App.js"></script>
-  <script src="src/main_page_header.js"></script>
+  <script src="src/user_main.js"></script>
+  <script src="src/main_file_header.js"></script>
   <script src="src/main_page_toolbar.js"></script>
   <script src="src/Questionlist.js"></script>
-  
+  <script src="src/Search_icon.js"></script>
+  <script src="src/main_searchbar.js"></script>
 </body>
 </html>
